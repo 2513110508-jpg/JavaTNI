@@ -1,33 +1,37 @@
 public class Student {
-    // attributes
-    public String name ;
-    public String id;
-    public int score = 0;
-    //methods
-// + do homework(point:int):void
-    public void doHomework(int point){
-        score += point; //score = score + point;
-        System.out.println(name + "did homework" + point + "points");
+    private String name;
+    private int study_year;
+    private int score = 0;
+
+    public void setName(String name) {
+        this.name = name;
     }
 
-    // + takeExam(point:int):void
-    public void takeExam(int point) {
-        score += point; //score = score + point
-        System.out.println(name + " took exam " + point + " points");
+    public String getName() {
+        return name;
     }
-    // + getResult():String
-    public String getResult(){
-        if (score >= 50)
-            return "PASS";
-        return "FAIL";
-    }
-    // + showStatus():void
-    public  void showStatus(){
-        System.out.println("Name : " + name);
-        System.out.println("ID : " + id);
-        System.out.println("Score : " + name);
-        System.out.println("Result : " + getResult());
-        System.out.println("------------------------------");
 
+    public void setStudyYear(int study_year) {
+        this.study_year = study_year;
+    }
+
+    public int getStudyYear() {
+        return study_year;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void addPoint(int point) {
+        this.score += point;
+        System.out.println(name + " got " + point + " points");
+    }
+
+    public String getGrade() {
+        if (score >= 80) return "A";
+        if (score >= 70) return "B";
+        if (score >= 60) return "C";
+        return "F";
     }
 }

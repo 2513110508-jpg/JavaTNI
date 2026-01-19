@@ -1,23 +1,30 @@
+import java.util.Scanner;
+
 public class StudentMain {
-    public static void main(String[] args){
-        Student s1 = new Student();
-        s1.name = "Malee";
-        s1.id = "2513110001";
+    public static void showInfo(Student st) {
+        System.out.println("Name: " + st.getName());
+        System.out.println("Year: " + st.getStudyYear());
+        System.out.println("Score: " + st.getScore());
+        System.out.println("Grade: " + st.getGrade());
+    }
 
-        s1.showStatus();
-        s1.doHomework( 10);
-        s1. showStatus();
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        Student student = new Student();
 
-        s1.doHomework(15);
-        s1.showStatus();
+        System.out.print("Enter student name   : ");
+        student.setName(scan.next());
 
-        s1.takeExam(20);
-        s1.showStatus();
+        System.out.print("Enter student year   : ");
+        student.setStudyYear(scan.nextInt());
 
-        Student s2 = new Student();
-        s2.name = "Tipco" ;
+        System.out.print("Enter mid-term score : ");
+        student.addPoint(scan.nextInt());
 
-        s1.showStatus();
-        s2.showStatus();
+        System.out.print("Enter final score    : ");
+        student.addPoint(scan.nextInt());
+
+        System.out.println();
+        showInfo(student);
     }
 }

@@ -1,37 +1,43 @@
 public class Book {
-
     private String title;
-    private int totalBook;
-    private int availableBook;
+    private String  category;
+    private double price;
+    private int discount_percent;
+    private Author author;
 
-    public Book(String title, int totalBook) {
+    public Book (String title, String category, double price, Author author) {
         this.title = title;
-        this.totalBook = totalBook;
-        this.availableBook = totalBook;
+        this.category = category;
+        this.price = price;
+        this.author = author;
+        this.discount_percent = 0;
     }
+    public Book () {
+        this("", "", 0.0, null);
 
+    }
+    public Author getAuthor() {
+        return this.author;
+    }
     public String getTitle() {
-        return title;
+        return this.title;
     }
-
-    public int getTotalBook() {
-        return totalBook;
+    public void setDiscount_percent(int discount_percent) {
+        this.discount_percent = discount_percent;
     }
-
-    public int getAvailableBook() {
-        return availableBook;
+    public int getDiscount_percent() {
+        return this.discount_percent;
     }
-
-    public void borrowBook() {
-        if (availableBook > 0) {
-            availableBook--;
-        }
+    public boolean isDiscountAvailable() {
+        return this.price > 500;
     }
-
-    public void returnBook() {
-        if (availableBook < totalBook) {
-            availableBook++;
-        }
+    public double calculateDiscountPrice() {
+        return this.price - (this.price * this.discount_percent / 100.0);
+    }
+    public String toString() {
+        return "Title: " + this.title +
+                "\nCategory: " + this.category +
+                "\nPrice: " + this.price + (isDiscountAvailable() ? calculateDiscountPrice()+")" : "")+
+                "\nAuthor: " + this.author.showAuthorInfo();
     }
 }
-
